@@ -2,7 +2,7 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
-import GuessInput from './GameInput';
+import GuessInput from './GuessInput';
 import GuessResult from './GuessResult';
 
 // Pick a random word on every pageload.
