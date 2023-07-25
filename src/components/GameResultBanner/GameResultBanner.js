@@ -1,12 +1,12 @@
 import React from 'react';
 
-function GameResultBanner({ answer, isWinner = false }) {
+function GameResultBanner({ answer, numberOfGuesses, isWinner = false }) {
 	if (isWinner) {
 		return (
 			<div className="happy banner">
 				<p>
 					<strong>Congratulations!</strong> Got it in
-					<strong>3 guesses</strong>.
+					<strong> {numberOfGuesses} guesses</strong>.
 				</p>
 			</div>
 		);

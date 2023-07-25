@@ -15,8 +15,7 @@ console.info({ answer });
 
 function Game() {
 	const [guesses, setGuesses] = React.useState([]);
-	const [isGameOver, setIsGameOver] = React.useState(false);
-	const [isWinner, setIsWinner] = React.useState(false);
+	const [gameStatus, setGameStatus] = React.useState('running');
 
 	const addToGuesses = (guessText) => {
 		const newGuess = {
@@ -26,29 +25,20 @@ function Game() {
 		};
 		const updatedGuesses = [...guesses, newGuess];
 		setGuesses(updatedGuesses);
-	};
-
-	React.useEffect(() => {
-		if (guesses.length <= NUM_OF_GUESSES_ALLOWED) {
-			const foundCorrectGuess = guesses
-				.map((item) => item.results.every((i) => i.status === 'correct'))
-				.find((item) => item);
-
-			if (foundCorrectGuess) {
-				setIsGameOver(true);
-				setIsWinner(true);
-			}
-			return;
+		if (guessText.toUpperCase() === answer) {
+			setGameStatus('won');
+		} else if (guesses.length >= NUM_OF_GUESSES_ALLOWED - 1) {
+			setGameStatus('lost');
 		}
-
-		setIsGameOver(true);
-	}, [guesses]);
+	};
 
 	return (
 		<>
 			<GuessResult guesses={guesses} />
-			<GuessInput addToGuesses={addToGuesses} isGameOver={isGameOver} />
-			{isGameOver && <GameResultBanner answer={answer} isWinner={isWinner} />}
+			<GuessInput addToGuesses={addToGuesses} isGameOver={gameStatus !== 'running'} />
+			{gameStatus !== 'running' && (
+				<GameResultBanner answer={answer} isWinner={gameStatus === 'won'} numberOfGuesses={guesses.length} />
+			)}
 		</>
 	);
 }
