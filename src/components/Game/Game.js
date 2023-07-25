@@ -16,7 +16,7 @@ function Game() {
 	const addToGuesses = (guessText) => {
 		const newGuess = {
 			text: guessText,
-			id: Math.random(),
+			id: guesses.length,
 		};
 		const updatedGuesses = [...guesses, newGuess];
 		setGuesses(updatedGuesses);

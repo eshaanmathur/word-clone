@@ -1,11 +1,11 @@
 import { range } from '../../utils';
 
 function Guess({ guess }) {
-	const letters = guess.split('').map((letter) => {
-		return { id: Math.random(), value: letter };
+	const letters = guess.split('').map((letter, idex) => {
+		return { id: idex, value: letter };
 	});
 
-	const emptyLetters = guess === '' ? range(5).map(() => ({ id: Math.random(), value: '' })) : [];
+	const emptyLetters = guess === '' ? range(5).map((number) => ({ id: number, value: '' })) : [];
 
 	return (
 		<p className="guess">
