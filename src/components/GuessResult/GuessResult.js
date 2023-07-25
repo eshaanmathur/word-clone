@@ -14,10 +14,10 @@ function GuessResult({ guesses }) {
 	return (
 		<div className="guess-results">
 			{lastSixGuesses.map((item) => (
-				<Guess key={item.id} guess={item.text} />
+				<Guess key={item.id} guess={item} />
 			))}
 			{emptyGuesses.map((item) => (
-				<Guess key={item.id} guess={item.text} />
+				<Guess key={item.id} />
 			))}
 		</div>
 	);

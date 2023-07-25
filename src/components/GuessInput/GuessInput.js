@@ -1,6 +1,7 @@
 import React from 'react';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
-function GuessInput({ addToGuesses }) {
+function GuessInput({ addToGuesses, numberOfGuesses }) {
 	const [guess, setGuess] = React.useState('');
 
 	const onGuessChange = (event) => {
@@ -27,6 +28,7 @@ function GuessInput({ addToGuesses }) {
 				pattern={'^[A-Z a-z]{5}$'}
 				title="Guess should only be 5 letter words"
 				required
+				disabled={numberOfGuesses === NUM_OF_GUESSES_ALLOWED}
 			/>
 		</form>
 	);
