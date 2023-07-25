@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput() {
+function GuessInput({ addToGuesses }) {
 	const [guess, setGuess] = React.useState('');
 
 	const onGuessChange = (event) => {
@@ -11,7 +11,7 @@ function GuessInput() {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData.entries());
-		console.info(data);
+		addToGuesses(data.guess);
 		setGuess('');
 	};
 
