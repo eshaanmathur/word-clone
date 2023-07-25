@@ -26,6 +26,7 @@ function GuessInput({ addToGuesses }) {
 				onChange={onGuessChange}
 				pattern={'^[A-Z a-z]{5}$'}
 				title="Guess should only be 5 letter words"
+				required
 			/>
 		</form>
 	);
