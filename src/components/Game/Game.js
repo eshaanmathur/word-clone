@@ -35,7 +35,7 @@ function Game() {
 	return (
 		<>
 			<GuessResult guesses={guesses} />
-			<GuessInput addToGuesses={addToGuesses} isGameOver={gameStatus !== 'running'} />
+			<GuessInput addToGuesses={addToGuesses} isGameOver={gameStatus !== 'running'} guesses={guesses} />
 			{gameStatus !== 'running' && (
 				<GameResultBanner answer={answer} isWinner={gameStatus === 'won'} numberOfGuesses={guesses.length} />
 			)}
