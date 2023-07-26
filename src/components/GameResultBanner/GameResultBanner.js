@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameResultBanner({ answer, numberOfGuesses, isWinner = false }) {
+function GameResultBanner({ answer, numberOfGuesses, resetGame, isWinner = false }) {
 	if (isWinner) {
 		return (
 			<div className="happy banner">
@@ -8,6 +8,7 @@ function GameResultBanner({ answer, numberOfGuesses, isWinner = false }) {
 					<strong>Congratulations!</strong> Got it in
 					<strong> {numberOfGuesses} guesses</strong>.
 				</p>
+				<button onClick={resetGame}>Restart Game</button>
 			</div>
 		);
 	}
@@ -17,6 +18,7 @@ function GameResultBanner({ answer, numberOfGuesses, isWinner = false }) {
 			<p>
 				Sorry, the correct answer is <strong>{answer}</strong>.
 			</p>
+			<button onClick={resetGame}>Restart Game</button>
 		</div>
 	);
 }
